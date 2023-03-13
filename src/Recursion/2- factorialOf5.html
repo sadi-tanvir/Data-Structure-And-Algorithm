@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursion Data Structure</title>
+</head>
+
+<body>
+
+    <h1>Factorial of 5</h1>
+
+    <script>
+        class Recursion {
+            constructor() {
+                this.factorial = 1;
+            }
+            factorialFunction(x) {
+                if (x > 0) {
+                    this.factorial = this.factorial * x
+                    console.log(this.factorial);
+                    this.factorialFunction(x - 1)
+                }
+            }
+
+            factorialWhile(x) {
+                while (x > 0) {
+                    this.factorial = this.factorial * x;
+                    console.log(this.factorial)
+                    x = x - 1;
+                }
+            }
+        }
+
+        let recursion = new Recursion()
+        // recursion.factorialFunction(5)
+        recursion.factorialWhile(5)
+
+        /*
+            // 1st
+            function expense2(x) {
+                if (x == 0) {
+                    return 1
+                }
+                return x * expense2(x - 1)
+            }
+            console.log(expense2(10));
+        */
+
+        /*
+               // 2nd
+               let fact = 10;
+               let multiply = 1;
+               function expense(x) {
+                   if (fact > 1) {
+                       multiply = multiply * fact
+                       fact -= 1
+                       expense()
+                   }
+               }
+               expense()
+               console.log(multiply);
+        */
+
+        /*
+                // 3rd
+                let factorial = 10
+                let multiply2 = 1
+                while (0 < factorial) {
+                    multiply2 *= factorial
+                    factorial = factorial - 1
+                }
+                console.log(multiply2);
+         */
+
+        /*
+            // with recursion
+            let index = 0;
+            let factorial = 5;
+            let result = 1
+            function factorialOfFive(fact) {
+                if (index < fact) {
+                    // result *= fact
+                    result = result * fact
+                    factorialOfFive(fact = fact - 1)
+                }
+            }
+            factorialOfFive(factorial)
+            console.log(result); 
+        */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stack - push & pop</title>
+</head>
+
+<body>
+
+    <!-- <input id="inpValue" type="text" placeholder="type your value">
+    <button onclick="push()">submit</button> -->
+
+    <h1>stack - push & pop</h1>
+
+    <script>
+        let inpValue = document.getElementById("inpValue")
+
+        let data = [];
+        let maxSize = 5;
+        var Top = 0; // you can provide 0 also
+
+        function push(x) {
+            if (Top < (maxSize - 1)) {
+                console.log(x, "is added into the array");
+                data[Top] = x
+                Top = Top + 1
+                // data.push(x)
+            } else {
+                console.log('top is equal to maxsize');
+            }
+        }
+
+        function pop() {
+            if (data.length !== 0) {
+                console.warn(data[data.length - 1], "removed from array");
+                data.length = data.length - 1
+                // data.pop()
+            } else {
+                console.error("data stack is empty");
+            }
+        }
+
+
+        push(1)
+        push(2)
+        push(3)
+        push(4)
+        push(5)
+
+        pop()
+        pop()
+        pop()
+        pop()
+        pop()
+
+        console.log(data);
+
+
+    </script>
+</body>
+
+</html>

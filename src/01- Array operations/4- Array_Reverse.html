@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Traversing And Accessing</title>
+
+</head>
+
+<body>
+
+    <!-- <button onclick="reverseArray()">reverse</button> -->
+
+    <script>
+        let data = [9, 45, 55, 67, 89, 90, 100, 65, 88, 77, 35];
+
+        class ReverseArray {
+            constructor() {
+                this.reversedArray = [];
+            };
+
+            reverseArray() {
+                let reverseIndex = 0;
+                for (let i = data.length - 1; i >= 0; i--) {
+                    this.reversedArray[reverseIndex] = data[i];
+                    reverseIndex = reverseIndex + 1;
+                };
+            };
+
+            anotherWayToReverse() {
+                let reverseIndex = 0;
+                for (let i = data.length - 1; i >= data.length / 2; i--) {
+                    let temp = data[reverseIndex];
+                    data[reverseIndex] = data[i];
+                    data[i] = temp;
+                    reverseIndex = reverseIndex + 1;
+                };
+            };
+
+            display() {
+                console.log(data);
+            };
+        };
+
+        const reverse = new ReverseArray();
+        reverse.anotherWayToReverse();
+        // reverse.reverseArray();
+        reverse.display();
+
+
+        /* let data = [1, 2, 3, 4, 5]
+        let reversedArray = []
+
+        // execute the function
+        function reverseArray() {
+            let count = 0;
+            for (let i = data.length - 1; i >= 0; i--) {
+                reversedArray[count++] = data[i]
+            }
+            console.log(reversedArray);
+        } */
+
+        // console.log(data.reverse());
+
+
+        /* reverse an array in the same array without push in others new array (this is my way)
+                let data = [13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+                const bodyH1 = document.getElementsByTagName('h1')
+        
+                // let newArray = []
+                let index = 0
+                for (let i = data.length - 1; i >= data.length / 2; i--) {
+                    let temp = data[index];
+                    data[index] = data[i];
+                    data[i] = temp;
+                    ++index
+                } */
+
+
+    </script>
+</body>
+
+</html>

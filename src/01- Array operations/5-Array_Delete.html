@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Traversing And Accessing</title>
+
+</head>
+
+<body>
+
+
+    <input placeholder="position" type="number" id="position" />
+    <button onclick="removeElement()">Remove Element</button>
+
+    <script>
+
+        let data = [9, 45, 55, 67, 89, 90, 100, 65, 88, 77, 35];
+
+        class DeleteArrayElement {
+            constructor() {
+                this.isFindElement = false;
+            };
+
+            deleteElementWithValue(val) {
+                for (let i = 0; i < data.length; i++) {
+                    this.isFindElement = false;
+
+                    if (data[i] === val) {
+                        for (let j = i; j < data.length; j++) {
+                            data[j] = data[j + 1];
+                        };
+
+                        this.isFindElement = true;
+                        break;
+                    };
+
+                    if (i === data.length - 1) {
+                        if (!this.find) {
+                            console.log(`your input ${val} is invalid`)
+                        }
+                    }
+                };
+
+                if (this.isFindElement) {
+                    data.length = data.length - 1;
+                    console.log(`delete`, val);
+                }
+            };
+
+            deleteElementWithPosition(position) {
+                for (let i = parseInt(position); i < data.length; i++) {
+                    data[i] = data[i + 1];
+                };
+                data.length = data.length - 1;
+            };
+
+            deleteElementWithFilter(val) {
+                let filteredValue = data.filter((elem, index) => {
+                    return elem !== val
+                });
+
+                console.log(filteredValue)
+            };
+
+            display() {
+                console.log(data);
+            };
+        };
+
+        const deleteElement = new DeleteArrayElement();
+        deleteElement.deleteElementWithValue(55);
+        deleteElement.deleteElementWithValue('100');
+        deleteElement.deleteElementWithValue(300);
+        deleteElement.deleteElementWithValue(35);
+        // deleteElement.deleteElement(3);
+        // deleteElement.deleteElementWithFilter(9)
+        deleteElement.display();
+
+
+
+        /*
+        // delete an item from the array
+        let position = document.getElementById('position')
+
+        let data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+        let deletePosition = 2
+
+
+        // execute the function
+        function removeElement() {
+            if (Number(position.value) < data.length) {
+                for (let i = Number(position.value); i < data.length; i++) {
+                    data[i] = data[i + 1]
+                }
+                data.length = data.length - 1
+                // data.pop()
+
+                console.log(data);
+
+                // return empty array
+                if (data.length === 0) {
+                    data[0] = []
+                }
+            } else {
+                console.log(`invalid index number`);
+            }
+        }
+ */
+
+    </script>
+</body>
+
+</html>

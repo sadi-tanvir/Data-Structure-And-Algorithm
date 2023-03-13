@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Traversing And Accessing</title>
+
+</head>
+
+<body>
+
+
+    <input placeholder="value" type="number" id="element" />
+    <input placeholder="position" type="number" id="position" />
+    <button onclick="addElement()">Get Element</button>
+
+    <script>
+
+        let data = [9, 45, 55, '67', undefined, 90, '100', null, 88, undefined, 35, null];
+
+        class InsertingArray {
+            constructor(position) {
+                this.position = position;
+            };
+
+            insertElement(elem) {
+                for (let i = data.length - 1; i >= 0; i--) {
+                    data[i + 1] = data[i];
+                    if (i === this.position) {
+                        data[i] = elem;
+                        break;
+                    };
+                };
+            };
+
+            insertWithBuiltInFunction(elem) {
+                data.splice(3, 0, elem)
+            }
+
+            display() {
+                console.log('Full Array -', data.length, data);
+            }
+        };
+
+        const insertArray = new InsertingArray(3)
+        insertArray.insertElement(9999)
+        insertArray.insertElement(1111)
+        // insertArray.insertWithBuiltInFunction(8888888)
+        insertArray.display()
+
+        /*
+        // insert a new value in position no. 3 of array
+        let element = document.getElementById('element')
+        let position = document.getElementById('position')
+
+        let data = [9, 45, 55, 67, 89, 90, 100, 65, 88, 77, 35];
+
+
+
+        function addElement() {
+            for (let i = data.length - 1; i >= 0; i--) {
+                if (i >= parseInt(position.value)) {
+                    data[i + 1] = data[i]
+
+                    if (i === parseInt(position.value)) {
+                        data[i] = parseInt(element.value)
+                    }
+                }
+            }
+            console.log(data);
+        }
+        */
+        /* function addElement() {
+            // data.splice(5)
+
+            // (position no., delete item, new element)
+            data.splice(parseInt(position.value), 0, parseInt(element.value))
+            console.log(data);
+        } */
+
+
+        /* // execute the function
+        function addElement() {
+            for (let i = array.length - 1; i >= 0; i--) {
+                array[i + 1] = array[i]
+
+                if (i === parseInt(position.value)) {
+                    array[i] = parseInt(element.value)
+                    console.log(array);
+                    break;
+                }
+            }
+        } */
+
+
+        /* let newElem = 666666
+        let position = 3;
+        for (let i = data.length - 1; i >= 0; i--) {
+            if (i >= position) {
+                data[i + 1] = data[i]
+
+                if (i === position) {
+                    data[i] = newElem
+                }
+            }
+        } */
+
+
+    </script>
+</body>
+
+</html>

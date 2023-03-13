@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Traversing And Accessing</title>
+
+</head>
+
+<body>
+
+    <h1>separate all of the different types of elements and store these in several variables</h1>
+
+
+    <script>
+        // separate all of the different types of elements and store these in several variables
+
+        let data = [9, 45, 55, '67', undefined, 90, '100', null, 88, undefined, 35, null];
+
+        class ArrayTraverse {
+            constructor() {
+                this.numberArray = [];
+                this.undefinedOrNullArray = [];
+                this.stringArray = [];
+                this.othersArray = [];
+                this.numberCounter = 0;
+                this.stringCounter = 0;
+                this.undefinedOrNullCounter = 0;
+                this.othersCounter = 0;
+            };
+
+            arrayTraverse() {
+                for (let i = 0; i < data.length; i++) {
+
+                    if (typeof data[i] === "number") {
+                        this.numberArray[this.numberCounter] = data[i];
+                        this.numberCounter = this.numberCounter + 1;
+                    }
+
+                    else if (typeof data[i] === "string") {
+                        this.stringArray[this.stringCounter++] = data[i]
+                    }
+
+                    else if (typeof data[i] === 'undefined') {
+                        this.undefinedOrNullArray[this.undefinedOrNullCounter++] = data[i]
+                    }
+
+                    else {
+                        this.othersArray[this.othersCounter++] = data[i]
+                    };
+
+                };
+            };
+
+            display() {
+                console.log('number array', this.numberArray);
+                console.log('string array', this.stringArray);
+                console.log('undefined array', this.undefinedOrNullArray);
+                console.log('others array', this.othersArray);
+            }
+        };
+
+        const traverse = new ArrayTraverse()
+        traverse.arrayTraverse()
+        traverse.display()
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack - String Reverse</title>
+</head>
+
+<body>
+
+    <h1>Stack - String Reverse</h1>
+    <button>reverse string</button>
+    <h3 id="nnnn">ss</h3>
+
+    <script>
+        let nnnn = document.getElementById("nnnn")
+        let data = [];
+        let currentSize = data.length;
+        let name = 'rivnat'
+        let reverseNameStr = []
+        let reverseNameCount = 0
+
+        function push(newVal) {
+            console.warn(newVal, 'has added into the data');
+            data[currentSize] = newVal;
+            currentSize++
+        };
+
+        function pop() {
+            if (currentSize !== 0) {
+                let lastRemove = data[currentSize - 1]
+                currentSize = currentSize - 1
+                data.length = currentSize;
+
+                return lastRemove
+            } else {
+                console.warn('your array is empty');
+            }
+        };
+
+
+        name = name.split('')
+        function reverseName(name) {
+            for (let z = name.length - 1; z >= 0; z--) {
+                push(name[z])
+            }
+        }
+
+
+        reverseName(name)
+        console.log('data.join("")', data.join(""));
+
+        // console.log(pop());
+
+
+
+
+    </script>
+</body>
+
+</html>

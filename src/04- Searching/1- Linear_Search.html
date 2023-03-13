@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Search</title>
+
+</head>
+
+<body>
+
+
+    <input placeholder="search" type="number" id="search" />
+    <button onclick="searchElement()">Search Element</button>
+
+    <script>
+        // search item from array
+        let search = document.getElementById('search')
+
+        let data = [9, 45, 55, 67, 89, 90, 100, 55, 65, 88, 77, 35];
+
+        class FindElementOfArray {
+            constructor() {
+                this.found = null;
+                this.message = '';
+            };
+
+            findItem(elem) {
+                this.found = null;
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i] == elem) {
+                        this.found = data[i];
+                        this.message = `the element is ${this.found}`;
+                        break;
+                    };
+
+                    if (i === data.length - 1) {
+                        if (this.found === null) {
+                            this.message = 'the element is not found';
+                        };
+                    };
+                };
+            };
+
+            display() {
+                console.log(this.message);
+            };
+        };
+
+        const findElement = new FindElementOfArray();
+        findElement.findItem(677);
+        findElement.display();
+
+
+        /*
+        let index = undefined;
+        function searchElement() {
+            for (let i = 0; i < data.length; i++) {
+                if (parseInt(search.value) == data[i]) {
+                    index = i
+                    break;
+                }
+                if (data[i] === data[data.length - 1] && parseInt(search.value) !== data[data.length - 1]) {
+                    console.log(`your value ${search.value} is not found in the array`);
+                    // break;
+                }
+            }
+            console.log('custom array finding', index);
+            console.log('by default function of js', data.indexOf(parseInt(search.value)));
+
+            // delete 1 item
+            // data.splice(2, 1)
+
+            // replace item (position no., delete item, new element)
+            // data.splice(parseInt(position.value), 0, parseInt(element.value))
+            console.log(data)
+        } */
+
+        // function searchElement() {
+        //     for (let i = 0; i < data.length; i++) {
+        //             if (parseInt(search.value) == data[i]) {
+        //                 console.log(data[i]);
+        //                 break;
+        //             }
+        //             if (data[i] === data[data.length-1] && parseInt(search.value) !== data[data.length - 1]) {
+        //                 console.log(`your value ${search.value} is not found in the array`);
+        //                 break;
+        //             }
+        //             console.log(data[i]);
+        //         }
+        // }
+
+
+
+
+    </script>
+</body>
+
+</html>

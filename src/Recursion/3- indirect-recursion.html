@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indirect Recursion</title>
+
+</head>
+
+<body>
+    <h1>Indirect Recursion</h1>
+    <script>
+        let money = 100;
+        let totalOrange = 0;
+        let orangePrice = 13;
+
+        function buyOrange(bdt) {
+            if (bdt >= orangePrice) {
+                console.log('i have', bdt, 'BDT', totalOrange, 'PCS');
+                byMore(bdt)
+            } else {
+                console.log('i have', bdt, 'BDT', totalOrange, 'PCS', 'i am done.');
+            }
+        }
+
+        function byMore(bdt) {
+            totalOrange++
+            buyOrange(bdt - orangePrice)
+        }
+        buyOrange(money)
+    </script>
+</body>
+
+</html>

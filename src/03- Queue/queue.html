@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>unshift - shift - pop - display</h1>
+
+    <input type="text" id="inp">
+
+    <button onclick={queue.unshift(parseInt(inp.value))}>unshift</button>
+    <button onclick={queue.shift()}>shift</button>
+    <button onclick={queue.display()} id="displayItem">display</button>
+
+
+    <script>
+        let inp = document.getElementById("inp")
+
+        class Queue {
+            constructor(size) {
+                this.queue = [3, 2, 1];
+                this.maxSize = size;
+                this.currentSize = this.queue.length;
+            }
+
+            // push(newVal) {
+            //     if (this.queue.length <= this.maxSize) {
+            //         this.queue[this.currentSize] = newVal
+            //         this.currentSize += 1
+            //     } else {
+            //         console.warn('your queue limit exceed');
+            //     }
+            // }
+
+            unshift(newElement) {
+                if (this.currentSize === 0) {
+                    this.queue[this.currentSize] = newElement;
+                    this.currentSize += 1;
+                } else if (this.currentSize > 0 && this.currentSize < this.maxSize) {
+                    for (let i = this.queue.length - 1; i >= 0; i--) {
+                        this.queue[i + 1] = this.queue[i];
+                        if (i === 0) {
+                            this.queue[i] = newElement;
+                            this.currentSize += 1;
+                        }
+
+                    }
+                } else {
+                    console.warn("Queue is Full!")
+                }
+            }
+
+            shift() {
+                if (this.currentSize > 0) {
+                    for (let i = 0; i < this.queue.length; i++) {
+                        this.queue[i] = this.queue[i + 1];
+                    }
+                    this.currentSize = this.currentSize - 1;
+                    this.queue.length = this.currentSize;
+                } else {
+                    console.warn("Queue is Empty!")
+                }
+            }
+
+            // pop() {
+            //     this.currentSize -= 1
+            //     this.queue.length = this.currentSize;
+            // }
+
+            display() {
+                console.log(this.queue);
+            }
+        }
+
+        let queue = new Queue(10)
+
+    </script>
+</body>
+
+</html>

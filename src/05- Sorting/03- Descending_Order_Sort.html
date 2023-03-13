@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selection Sort</title>
+</head>
+
+<body>
+
+    <h1>Descending Sort</h1>
+
+    <script>
+        let data = [45, 9, 55, 67, 89, 90, 100, 65, 88, 77, 35];
+
+
+        for (let i = data.length - 1; i >= 0; i--) {
+            let maxIndex = i;
+
+            for (let j = i - 1; j >= 0; j--) {
+                if (data[maxIndex] < data[j]) {
+                    maxIndex = j;
+                }
+            }
+
+            let temp = data[i];
+            data[i] = data[maxIndex];
+            data[maxIndex] = temp;
+        }
+
+        console.log("reverse Descending sort ", data);
+
+
+
+        // for (let i = 0; i < data.length; i++) {
+        //     let maxIndex = i;
+        //     for (let j = i + 1; j < data.length; j++) {
+        //         if (data[maxIndex] < data[j]) {
+        //             maxIndex = j;
+        //         }
+        //     }
+
+        //     let temp = data[i];
+        //     data[i] = data[maxIndex];
+        //     data[maxIndex] = temp
+        // }
+
+        // console.log("Descending sort", data)
+    </script>
+</body>
+
+</html>

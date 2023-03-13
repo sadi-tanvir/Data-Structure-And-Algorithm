@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort</title>
+</head>
+
+<body>
+
+    <h1>Bubble Sort</h1>
+
+    <script>
+
+        let array = [45, 9, 55, 67, 89, 90, 100, 65, 88, 77, 35];
+
+        class SortArray {
+            constructor() { }
+
+            sortingArrayBottomToTop() {
+                for (let i = 0; i < array.length; i++) {
+                    for (let z = 0; z < array.length; z++) {
+                        if (array[z] > array[z + 1]) {
+                            let temp = array[z];
+                            array[z] = array[z + 1];
+                            array[z + 1] = temp;
+                            console.log('check');
+                        };
+                    };
+                };
+            };
+
+            sortingArrayTopToBottom() {
+                for (let i = 0; i < array.length; i++) {
+                    for (let z = 0; z < array.length; z++) {
+                        if (array[z] < array[z + 1]) {
+                            let temp = array[z];
+                            array[z] = array[z + 1];
+                            array[z + 1] = temp;
+                            console.log('check');
+                        };
+                    };
+                };
+            };
+
+            defaultSorting() {
+                array.sort((a, b) => a - b)
+            };
+
+            display() {
+                console.log(array);
+            };
+        }
+
+        let sortArray = new SortArray()
+        sortArray.sortingArrayBottomToTop()
+        // sortArray.sortingArrayTopToBottom()
+        // sortArray.defaultSorting()
+        sortArray.display()
+
+
+
+        /*
+        let data = [50, 40, 7, 52, 38, 34, 42, 30, 10, 28, 55, 27, 98, 5, 7, 2]
+        for (let i = 0; i < data.length; i++) {
+            for (let j = 0; j < data.length; j++) {
+                if (data[j] > data[j + 1]) {
+                    let temp = data[j];
+                    data[j] = data[j + 1];
+                    data[j + 1] = temp;
+                }
+                console.log('c');
+            }
+        }
+        console.error(data);
+
+        // data.sort((a, b) => a + b) */
+    </script>
+</body>
+
+</html>

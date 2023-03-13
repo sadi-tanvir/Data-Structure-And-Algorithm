@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Merge</title>
+
+</head>
+
+<body>
+
+    <input type="number" id="element" />
+    <button onclick="getElement()">Get Element</button>
+
+    <script>
+
+        let array1 = [1, 2, 3, 4, 5];
+        let array2 = [6, 7, 8, 9, 10, 11, 12];
+
+        class MergeArray {
+            constructor() {
+                this.newArray = [];
+                this.index1 = 0;
+                this.index2 = 0;
+            }
+
+            mergeArrayWhileLoop() {
+                while (this.index1 < array1.length) {
+                    this.newArray[this.index1] = array1[this.index1]
+                    this.index1 += 1
+                }
+
+                while (this.index2 < array2.length) {
+                    this.newArray[this.index1] = array2[this.index2];
+                    this.index1 += 1;
+                    this.index2 += 1;
+                }
+            }
+
+            mergeArrayForLoop() {
+                for (let i = 0; i < array1.length; i++) {
+                    this.newArray[i] = array1[i];
+                }
+                for (let i = 0; i < array2.length; i++) {
+                    this.newArray[array1.length + i] = array2[i];
+                }
+            }
+
+            display() {
+                console.log(this.newArray)
+            }
+        }
+
+        const mergeArray = new MergeArray()
+        // mergeArray.mergeArrayWhileLoop()
+        mergeArray.mergeArrayForLoop()
+        mergeArray.display()
+
+        /*
+                let elem = document.getElementById("element")
+                let data = [1, 2, 3, 4, 5];
+                let data2 = [6, 7, 8, 9, 10]
+        
+                let newArray = []
+        
+                for (let i = 0; i < data.length; i++) {
+                    // newArray.push(data[i])
+                    newArray[i] = data[i]
+                }
+        
+                for (let i = 0; i < data2.length; i++) {
+                    // newArray.push(data2[i])
+                    newArray[data.length + i] = data2[i]
+                }
+        
+                // by default functionality
+                // newArray=[...data, ...data2]
+        
+                console.log(newArray); */
+
+
+    </script>
+</body>
+
+</html>
