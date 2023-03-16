@@ -1,0 +1,8 @@
+1- const obj = {
+            a: 1,
+            b: null,
+            c: undefined,
+            d: 4
+        };
+
+remove null and undefined value from the above object

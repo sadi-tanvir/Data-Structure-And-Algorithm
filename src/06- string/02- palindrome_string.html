@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertion Sort</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.17/tailwind.min.css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body style="background-color: black;">
+
+    <h1 class="text-red-500 text-5xl font-bold text-center mt-10">Anagram String</h1>
+
+    <div id="mainDiv" class="w-10/12 mx-auto mt-5 border border-red-500 p-5">
+        <h1 class="text-2xl text-red-700 capitalize font-bold" id="doNotMatch"></h1>
+        <span class="simpleSpan"></span>
+    </div>
+
+    <script>
+        const mainDiv = document.getElementById("mainDiv");
+        const doNotMatch = document.getElementById("doNotMatch");
+
+
+        class PalindromeString {
+            constructor(data) {
+                this.data = data;
+                this.left = 0;
+                this.right = this.data.length - 1;
+                this.result = true;
+            };
+            palindromeCheck() {
+                while (this.left < this.right) {
+                    if (this.data[this.left] !== this.data[this.right]) {
+                        this.result = false;
+                    };
+
+                    this.left++;
+                    this.right--;
+                };
+
+                if (!this.result) {
+                    return doNotMatch.innerText = "palindrome doesn't match!"
+                } else {
+                    return (
+                        doNotMatch.innerText = "palindrome has been matched!",
+                        doNotMatch.classList.replace("text-red-700", "text-white")
+                    );
+                };
+            };
+        };
+
+        const palindromeString = new PalindromeString('level');
+        palindromeString.palindromeCheck();
+
+    </script>
+</body>
+
+</html>
