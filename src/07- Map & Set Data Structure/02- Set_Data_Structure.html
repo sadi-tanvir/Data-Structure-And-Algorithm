@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Data Structure</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.17/tailwind.min.css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body style="background-color: black;">
+
+    <h1 style="color:brown" class="text-5xl font-bold  text-center">Set Data Structure</h1>
+
+    <ul id="ul" class="text-white font-bold text-3xl mt-10 text-center">
+
+    </ul>
+
+
+    <script>
+        const ul = document.getElementById("ul")
+
+        // define a Set data structure
+        let data = new Set(
+            ["sadi", "sami", "tanvir", "sadi"]
+        );
+        let pureArrayData = [];
+
+        // add an element in the Set
+        data.add("rakib")
+        data.add("sobuj")
+
+        // checking if a key exists in the Set
+        console.warn("does key exist? - ", data.has("rakib"));
+
+        // iterating over the values in the Set
+        for (let value of data) {
+            pureArrayData[pureArrayData.length++] = value;
+        }
+
+        // delete an element from the Set
+        data.delete("sobuj")
+
+
+        // checking size of the Set
+        console.warn("size of the Set - ", data.size);
+
+
+        // print information
+        console.warn("all data - ", data.keys());
+
+
+        // erasing all of values from the Set
+        data.clear()
+
+        // showing elements in the DOM
+        ul.innerHTML = `
+            ${pureArrayData.map((elem, index) => (`<li> ${index + 1} - ${elem}</li>`)).join("")}
+        `
+
+
+    </script>
+</body>
+
+</html>

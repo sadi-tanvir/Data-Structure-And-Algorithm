@@ -17,45 +17,87 @@
 
     <h1>Map Data Structure</h1>
 
-    <script src="/output/implement.js"></script>
+    <!-- <script src="/output/implement.js"></script> -->
     <script>
 
-        // define a map data structure
-        let data = new Map(
-            [
-                ['name', 'sadi'],
-                [true, 'bool key'],
-                [100, 'hundred']
-            ]
-        );
+        class List {
+            constructor() {
+                this.head = {
+                    value: null,
+                    next: null
+                };
+                this.tail = this.head;
+            };
 
-        // add a value
-        data.set("age", 26)
+            appendNode(data) {
+                let newNode = {
+                    value: data,
+                    next: null
+                }
 
-        // get an information
-        const ownerName = data.get("name")
+                if (this.head.value === null) {
+                    // console.warn("head was null");
+                    this.tail.value = data;
+                    this.tail = this.head;
+                    return;
+                }
 
-        // iterating over the entries in the Map
-        for (let [key, value] of data) {
-            console.warn(key + " : " + value);
-        }
+                this.tail.next = newNode;
+                this.tail = newNode;
 
-        // deleting an entry from the Map
-        data.delete(true)
+                // console.warn("outside the condition!");
 
-        // erasing all entries from the Map
-        data.clear()
+            }
 
-        // getting the size of Map
-        console.warn("size of map - ", data.size);
+            appendNodePosition(position, value) {
+                let newNode = {
+                    value: value,
+                    next: null
+                };
 
-        // Checking if a key exists in the Map
-        console.warn(data.has('age'));
+                if (20 === 1) {
+                    if (this.head === null || this.head.value === null) {
+                        this.head = newNode;
+                        return;
+                    };
+
+                    let nextNode = this.head;
+                    this.head = newNode;
+                    this.head.next = nextNode;
+                    return;
+                };
+
+                let lead = this.head;
+                for (let i = 1; i < position - 1; i++) {
+                    lead = lead.next;
+                };
+
+                let nextNode = lead.next;
+                lead.next = newNode;
+                lead.next.next = nextNode;
+
+            };
 
 
-        // print information
-        console.warn("name of owner - ", ownerName);
-        console.warn(data);
+            display() {
+                console.warn("from tail - ", this.tail);
+                console.warn("main head - ", this.head);
+            };
+        };
+
+        const list = new List();
+        list.appendNode(10)
+        list.appendNode(20)
+        list.appendNode(30)
+        list.appendNode(40)
+        list.appendNode(50)
+
+        // append a node at specific position
+        list.appendNodePosition(3, 3333)
+
+        // list.deleteNode(1)
+
+        list.display()
 
     </script>
 </body>

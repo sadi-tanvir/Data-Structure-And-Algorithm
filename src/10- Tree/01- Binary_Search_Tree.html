@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Search Tree</title>
+</head>
+
+<body style="background-color: black; margin-left: 50px;">
+
+    <h1 style="color:brown">Binary Search Tree</h1>
+    <h3 style="color:white">2</h3>
+
+    <!-- <input id="inpValue" type="text" placeholder="type your value">
+    <button onclick="push()">submit</button> -->
+
+
+    <script>
+        class Node {
+            constructor(val) {
+                this.value = val;
+                this.left = null;
+                this.right = null;
+            };
+        }
+        class BSTree {
+            constructor() {
+                this.root = null;
+            };
+
+            isTreeEmpty() {
+                return this.root === null;
+            };
+        };
+
+        const bsTree = new BSTree();
+        console.warn(bsTree.isTreeEmpty());
+    </script>
+</body>
+
+</html>
