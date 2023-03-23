@@ -11,7 +11,9 @@
 <body style="background-color: black; margin-left: 50px;">
 
     <h1 style="color:brown">Binary Search Tree</h1>
-    <h3 style="color:white">2</h3>
+    <h3 style="color:white">1- Add a node in the tree</h3>
+    <h3 style="color:white">2- search node using loop</h3>
+    <h3 style="color:white">3- search node using recursion</h3>
 
     <!-- <input id="inpValue" type="text" placeholder="type your value">
     <button onclick="push()">submit</button> -->
@@ -33,10 +35,179 @@
             isTreeEmpty() {
                 return this.root === null;
             };
+
+            // 1- Add a node in the tree
+            makeTree(val) {
+                let newNode = new Node(val);
+                if (this.root === null) {
+                    this.root = newNode;
+                } else {
+                    this.insertNode(this.root, newNode);
+                };
+            };
+
+            insertNode(root, newNode) {
+                if (root.value > newNode.value) {
+                    if (root.left === null) {
+                        root.left = newNode;
+                    } else {
+                        this.insertNode(root.left, newNode);
+                    };
+                } else {
+                    if (root.right === null) {
+                        root.right = newNode;
+                    } else {
+                        this.insertNode(root.right, newNode);
+                    };
+                }
+            };
+
+            // 2- search node using loop
+            searchNodeUsingLoop(val) {
+                if (this.root === null) {
+                    console.warn("Tree is empty!");
+                    return;
+                };
+
+                let current = this.root;
+                while (current !== null) {
+                    console.warn(current);
+                    if (current.value === val) {
+                        console.warn("got it", current.value);
+                        return;
+                    };
+                    if (current.value > val) {
+                        current = current.left;
+                    } else {
+                        current = current.right;
+                    }
+
+                };
+
+                // if the value doesn't exist
+                console.warn("the value you have entered doesn't exist!");
+            };
+
+
+            // 3- search node using recursion
+            search(root, val) {
+                if (root === null) {
+                    console.warn("The value you have entered does not exist in the tree.");
+                } else if (root.value === val) {
+                    console.warn("got it from recursion", root.value);
+                } else if (root.value > val) {
+                    this.search(root.left, val);
+                } else {
+                    this.search(root.right, val)
+                };
+            };
+
+            preOrder(root) {
+                if (root) {
+                    console.warn("pre order", root);
+                    this.preOrder(root.left);
+                    this.preOrder(root.right);
+                }
+            }
+
+            // Breadth first Search Traversing
+            bfsTraversing() {
+                let queue = [];
+                queue.push(this.root);
+
+                while (queue.length) {
+                    let current = queue.shift();
+                    console.warn(current.value);
+                    if (current.left) {
+                        queue.push(current.left);
+                    };
+
+                    if (current.right) {
+                        queue.push(current.right);
+                    };
+                };
+            };
+
+            minNodeSearch(root) {
+                if (root.left === null) {
+                    return root.value;
+                } else {
+                    return this.minNodeSearch(root.left);
+                }
+            };
+
+            maxNodeSearch(root) {
+                if (!root.right) {
+                    return root.value;
+                } else {
+                    return this.maxNodeSearch(root.right)
+                }
+            };
+
+            removeData(value) {
+                this.root = this.deleteNode(this.root, value)
+            };
+
+            deleteNode(root, value) {
+                // if root initially null
+                if (root === null) return null;
+
+                if (root.value > value) {
+                    root.left = this.deleteNode(root.left, value);
+                } else if (root.value < value) {
+                    root.right = this.deleteNode(root.right, value);
+                } else {
+                    if (!root.left && !root.right) {
+                        return null;
+                    }
+
+
+                    root.value = this.minNodeSearch(root.right);
+                    root.right = this.deleteNode(root.right, root.value)
+                }
+
+                return root;
+            }
         };
 
+
         const bsTree = new BSTree();
-        console.warn(bsTree.isTreeEmpty());
+
+        // 1 - Add a node in the tree
+        bsTree.makeTree(20);
+        bsTree.makeTree(1);
+        bsTree.makeTree(10);
+        bsTree.makeTree(5);
+        bsTree.makeTree(11);
+        bsTree.makeTree(30);
+        bsTree.makeTree(40);
+        bsTree.makeTree(23);
+
+        // 2- search node using loop
+        // bsTree.searchNodeUsingLoop(200);
+
+        // 3- search node using recursion
+        // bsTree.search(bsTree.root, 205);
+
+        // traversing tree
+        // bsTree.preOrder(bsTree.root);
+
+        // Breadth first Search Traversing
+        // bsTree.bfsTraversing();
+
+        // search min node
+        // console.warn(bsTree.minNodeSearch(bsTree.root));
+
+        // search max node
+        // console.warn(bsTree.maxNodeSearch(bsTree.root));
+
+        // delete node from tree
+        bsTree.removeData(5)
+
+        bsTree.bfsTraversing();
+
+        console.warn("display", bsTree.root);
+
     </script>
 </body>
 
