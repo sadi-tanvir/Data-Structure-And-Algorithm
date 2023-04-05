@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Data Structure</title>
+</head>
+
+<body style="background-color: black;">
+
+    <h1 style="color:brown">Vertex Graph</h1>
+
+    <!-- <input id="inpValue" type="text" placeholder="type your value">
+    <button onclick="push()">submit</button> -->
+
+
+    <!-- <script src="/output/implement.js"></script> -->
+    <script>
+        
+        class VertexGraph {
+            constructor() {
+                this.data = {};
+            };
+
+            addVertex(vertex) {
+                this.data[vertex] = [];
+            };
+        };
+
+        const graph1 = new VertexGraph();
+        graph1.addVertex('A');
+        graph1.addVertex('B');
+        graph1.addVertex('C');
+        graph1.addVertex('D');
+
+
+        console.warn(graph1.data);
+
+    </script>
+</body>
+
+</html>
