@@ -15,93 +15,35 @@
     <!-- <input id="inpValue" type="text" placeholder="type your value">
     <button onclick="push()">submit</button> -->
 
-    <h1>Map Data Structure</h1>
+    <h1>Stack - Data Structure</h1>
 
     <!-- <script src="/output/implement.js"></script> -->
     <script>
 
-        class List {
+        class BinaryArray {
             constructor() {
-                this.head = {
-                    value: null,
-                    next: null
-                };
-                this.tail = this.head;
+                this.data = [9, 35, 45, 55, 58, 65, 67, 77, 88, 89, 90, 100];
+                this.start = 0;
+                this.end = this.data.length;
             };
 
-            appendNode(data) {
-                let newNode = {
-                    value: data,
-                    next: null
+            binarySearch(start, end, elem) {
+                let mid = Math.floor((start + end) / 2);
+
+                if(this.data[mid] === elem){
+                    console.warn("got the value", this.data[mid]);
+                }else if(this.data[mid] < elem ){
+                    this.binarySearch(mid+1,end, elem);
+                }else {
+                    this.binarySearch(start, mid- 1, elem);
                 }
 
-                if (this.head.value === null) {
-                    // console.warn("head was null");
-                    this.tail.value = data;
-                    this.tail = this.head;
-                    return;
-                }
-
-                this.tail.next = newNode;
-                this.tail = newNode;
-
-                // console.warn("outside the condition!");
-
-            }
-
-            appendNodePosition(position, value) {
-                let newNode = {
-                    value: value,
-                    next: null
-                };
-
-                if (20 === 1) {
-                    if (this.head === null || this.head.value === null) {
-                        this.head = newNode;
-                        return;
-                    };
-
-                    let nextNode = this.head;
-                    this.head = newNode;
-                    this.head.next = nextNode;
-                    return;
-                };
-
-                let lead = this.head;
-                for (let i = 1; i < position - 1; i++) {
-                    lead = lead.next;
-                };
-
-                let nextNode = lead.next;
-                lead.next = newNode;
-                lead.next.next = nextNode;
-
             };
+        }
 
+        const binaryArray = new BinaryArray();
+        binaryArray.binarySearch(binaryArray.start, binaryArray.end, 35)
 
-            display() {
-                console.warn("from tail - ", this.tail);
-                console.warn("main head - ", this.head);
-            };
-        };
-
-        const list = new List();
-        list.appendNode(10)
-        list.appendNode(20)
-        list.appendNode(30)
-        list.appendNode(40)
-        list.appendNode(50)
-
-        // append a node at specific position
-        list.appendNodePosition(3, 3333)
-
-        // list.deleteNode(1)
-
-        list.display()
-
-
-        // for checking purpose 1.00
-        // for checking purpose 2.00 from the desktop
     </script>
 </body>
 

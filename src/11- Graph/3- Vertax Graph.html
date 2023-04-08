@@ -18,7 +18,7 @@
 
     <!-- <script src="/output/implement.js"></script> -->
     <script>
-        
+
         class VertexGraph {
             constructor() {
                 this.data = {};
@@ -27,16 +27,38 @@
             addVertex(vertex) {
                 this.data[vertex] = [];
             };
+
+            addEdge(v1, v2) {
+                if (!this.data[v1]) {
+                    this.addVertex(v1);
+                } else if (!this.data[v2]) {
+                    this.addVertex(v2)
+                }
+
+                // use this
+                // this.data[v1].push(v2); 
+                // this.data[v2].push(v1);
+
+                // or use this
+                this.data[v1][this.data[v1].length] = v2;
+                this.data[v2][this.data[v2].length] = v1;
+
+            };
+
         };
 
-        const graph1 = new VertexGraph();
-        graph1.addVertex('A');
-        graph1.addVertex('B');
-        graph1.addVertex('C');
-        graph1.addVertex('D');
+        const vertexGraph = new VertexGraph();
+        vertexGraph.addVertex('A');
+        vertexGraph.addVertex('B');
+        vertexGraph.addVertex('C');
+        vertexGraph.addVertex('D');
 
+        vertexGraph.addEdge('A', 'B');
+        vertexGraph.addEdge('A', 'C');
+        vertexGraph.addEdge('B', 'C');
+        vertexGraph.addEdge('B', 'D');
 
-        console.warn(graph1.data);
+        console.warn(vertexGraph.data);
 
     </script>
 </body>
