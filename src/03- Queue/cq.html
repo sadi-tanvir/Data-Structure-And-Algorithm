@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let queue = new Array(5);
+        let arrr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        let start = -1;
+        let end = -1;
+        let currentSize = 0;
+
+        function enqueue(elem) {
+            if (currentSize < queue.length) {
+                if (start == -1 && end == -1) {
+                    start = 0;
+                    end = 0;
+                }
+
+                if (end == 5) {
+                    end = 0;
+                    queue[end] = elem;
+                } else {
+                    queue[end] = elem;
+                }
+                end++
+                currentSize++;
+            } else {
+                console.warn(`queue is already full`);
+            }
+        }
+
+        function dequeue() {
+            if (currentSize > 0) {
+                queue[start] = null;
+                start++
+                currentSize--;
+            } else {
+                start = -1;
+                end = -1
+                console.warn(`queue is empty`);
+            }
+        }
+        let random = Math.floor(Math.random() * arrr.length);
+        let sadi = 0;
+        for (let i = random; i < arrr.length; i++) {
+            if (sadi < queue.length) {
+                sadi++
+                console.warn(i, arrr.length);
+                if (i == arrr.length - 1) {
+                    i = -1;
+                }
+            } else {
+                console.warn('break;');
+                break;
+            }
+        }
+        console.warn(random);
+
+        // for (let i = 0; i < arrr.length; i++) {
+        //     if (i < 10) {
+        //         console.warn('elem', arrr[i], 'index', i);
+        //     } else {
+        //         console.warn('break');
+        //         break;
+        //     }
+        // }
+
+
+    </script>
+</body>
+
+</html>

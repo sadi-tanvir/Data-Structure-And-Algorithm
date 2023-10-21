@@ -5,27 +5,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Head and Tail Recursion</title>
+    <title>Reverse Array Using Recursion</title>
 
 </head>
 
 <body>
-    <h1>Head and Tail Recursion</h1>
+    <h1>Reverse Array Using Recursion</h1>
     <script>
-        let data = [5, 4, 3, 2, 1];
-        let newArray = [];
-        let index = 0;
-        function reverseArrayUsingRecursion(x) {
-            if (x >= 0) {
-                newArray[index] = data[x];
-                index++
-                reverseArrayUsingRecursion(x - 1);
+
+        class ReverseArray {
+            constructor() {
+                this.data = [7, 6, 5, 4, 3, 2, 1];
+                this.reverseIndex = this.data.length - 1;
+                this.reverseData = [];
             };
+
+            reverseArray() {
+                for (let i = 0; i < this.data.length / 2; i++) {
+                    let temp = this.data[i];
+                    this.data[i] = this.data[this.reverseIndex];
+                    this.data[this.reverseIndex] = temp;
+                    this.reverseIndex--
+                };
+            };
+
+            reverseArrayAnotherWay() {
+                for (let i = 0; i < this.data.length; i++) {
+                    this.reverseData[i] = this.data[this.reverseIndex--];
+                }
+            };
+
+            reverseArrayUsingRecursion(data, length) {
+                if (length >= 0) {
+                    this.reverseData[this.reverseData.length] = data[length];
+                    this.reverseArrayUsingRecursion(data, length - 1);
+                };
+            };
+
         };
 
-        reverseArrayUsingRecursion(data.length - 1);
 
-        console.log(newArray);
+        const reverseArray = new ReverseArray()
+        // reverseArray.reverseArray()
+        // reverseArray.reverseArrayAnotherWay()
+        reverseArray.reverseArrayUsingRecursion(reverseArray.data, reverseArray.data.length - 1)
+        console.warn(reverseArray.reverseData);
+
+
+        /*  let data = [5, 4, 3, 2, 1];
+         let newArray = [];
+         let index = 0;
+         function reverseArrayUsingRecursion(x) {
+             if (x >= 0) {
+                 newArray[index] = data[x];
+                 index++
+                 reverseArrayUsingRecursion(x - 1);
+             };
+         };
+ 
+         reverseArrayUsingRecursion(data.length - 1);
+ 
+         console.log(newArray); */
     </script>
 </body>
 

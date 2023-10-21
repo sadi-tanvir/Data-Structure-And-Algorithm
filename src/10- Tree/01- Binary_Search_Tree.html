@@ -18,25 +18,38 @@
 
 
     <script>
+
+
         class Node {
             constructor(val) {
                 this.value = val;
                 this.left = null;
                 this.right = null;
-            };
+            }
         }
+
         class BSTree {
             constructor() {
                 this.root = null;
             };
 
-            isTreeEmpty() {
-                return this.root === null;
-            };
-        };
+            addNode(val) {
+                let newNode = new Node(val)
 
+                if (this.root == null) {
+                    this.root = newNode;
+                    return;
+                };
+
+                if (this.root.value > val) {
+                    this.addNode()
+                }
+
+            }
+        }
         const bsTree = new BSTree();
-        console.warn(bsTree.isTreeEmpty());
+        bsTree.addNode(20);
+        console.warn(bsTree.root);
     </script>
 </body>
 

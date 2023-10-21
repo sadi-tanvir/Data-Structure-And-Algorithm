@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursion Data Structure</title>
+</head>
+
+<body>
+
+    <h1>Recursion Data Structure</h1>
+
+    <script>
+
+        function fibonacciSeries(n) {
+            if (n == 1) {
+                return 0
+            };
+
+            if (n == 2) {
+                return 1
+            }
+
+            let pre1 = fibonacciSeries(n - 1);
+            let pre2 = fibonacciSeries(n - 2);
+            return pre1 + pre2;
+        };
+        let fib = fibonacciSeries(10);
+        console.warn(fib);
+
+    </script>
+</body>
+
+</html>

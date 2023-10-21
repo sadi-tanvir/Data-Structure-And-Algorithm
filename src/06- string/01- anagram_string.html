@@ -42,23 +42,23 @@
             }
 
             for (ch of str1) {
-                strObj[ch] = (strObj[ch] || 0) + 1;
+                strObj[ch] = (strObj[ch] || 0) + 1; 
             };
 
             for (ch of str2) {
                 if (!strObj[ch]) {
                     return doNotMatch.innerText = "anagram doesn't match!";
                 }
-
+                
                 strObj[ch]--
             }
-
+            
+            console.log(strObj)
             return (
                 doNotMatch.innerText = ("anagram has been matched!"),
                 doNotMatch.classList.replace('text-red-700', 'text-white')
             );
 
-            console.log(strObj)
         };
 
         checkAnagram("hello", "hello");

@@ -1,4 +1,4 @@
-let selection_array = [45, 9, 55, 67, 89, 90, 100, 65, 88, 77, 35];
+let selection_array: number[] = [45, 9, 55, 67, 89, 90, 100, 65, 88, 77, 35];
 
 
 class SelectionSort {

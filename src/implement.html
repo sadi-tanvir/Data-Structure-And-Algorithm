@@ -6,6 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Implement Programming</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.17/tailwind.min.css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script> -->
 </head>
 
 <body style="background-color: black;">
@@ -15,34 +27,26 @@
     <!-- <input id="inpValue" type="text" placeholder="type your value">
     <button onclick="push()">submit</button> -->
 
-    <h1>Stack - Data Structure</h1>
+    <h1 style="color:brown">Linked List Operations</h1>
+    <h3 style="color:white">1- append a node</h3>
+    <h3 style="color:white">2- append a node at specific position</h3>
+    <h3 style="color:white">3- Traverse node</h3>
+    <h3 style="color:white">4- Search a node with value</h3>
+    <h3 style="color:white">5- Search a node with position</h3>
+    <h3 style="color:white">6- delete first node</h3>
+    <h3 style="color:white">7- delete last node</h3>
+    <h3 style="color:white">8- delete a node using position</h3>
+    <h3 style="color:white">9- delete a node using value</h3>
+
+    <div id="mainDiv" class="w-10/12 mx-auto mt-5 border border-red-500 p-5">
+        <h1 class="text-2xl text-red-700 capitalize font-bold" id="doNotMatch"></h1>
+        <span class="simpleSpan"></span>
+    </div>
 
     <!-- <script src="/output/implement.js"></script> -->
     <script>
 
-        class BinaryArray {
-            constructor() {
-                this.data = [9, 35, 45, 55, 58, 65, 67, 77, 88, 89, 90, 100];
-                this.start = 0;
-                this.end = this.data.length;
-            };
-
-            binarySearch(start, end, elem) {
-                let mid = Math.floor((start + end) / 2);
-
-                if(this.data[mid] === elem){
-                    console.warn("got the value", this.data[mid]);
-                }else if(this.data[mid] < elem ){
-                    this.binarySearch(mid+1,end, elem);
-                }else {
-                    this.binarySearch(start, mid- 1, elem);
-                }
-
-            };
-        }
-
-        const binaryArray = new BinaryArray();
-        binaryArray.binarySearch(binaryArray.start, binaryArray.end, 35)
+        
 
     </script>
 </body>

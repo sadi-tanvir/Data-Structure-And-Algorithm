@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Data Structure</title>
+</head>
+
+<body style="background-color: black;">
+
+    <h1 style="color:brown">Remove Edge from Graph</h1>
+
+    <!-- <input id="inpValue" type="text" placeholder="type your value">
+    <button onclick="push()">submit</button> -->
+
+
+    <!-- <script src="/output/implement.js"></script> -->
+    <script>
+
+        class VertexGraph {
+            constructor() {
+                this.data = {};
+            };
+
+            // 1- add vertex
+            addVertex(vertex) {
+                this.data[vertex] = [];
+            };
+
+            // 2- add edge
+            addEdge(v1, v2) {
+                if (!this.data[v1]) {
+                    this.addVertex(v1);
+                }
+                if (!this.data[v2]) {
+                    this.addVertex(v2)
+                }
+
+                // use this
+                // this.data[v1].push(v2); 
+                // this.data[v2].push(v1);
+
+                // or use this
+                this.data[v1][this.data[v1].length] = v2;
+                this.data[v2][this.data[v2].length] = v1;
+
+            };
+
+            // 3- remove edge with loop
+            removeEdgeWithLoop(v1, v2) {
+                if (this.data[v1] && this.data[v1]) {
+                    for (let i = 0; i < this.data[v1].length; i++) {
+                        console.warn(3);
+                        if (this.data[v1][i] == v2) {
+                            if (this.data[v1].length == 1) {
+                                this.data[v1] = [];
+                                break;
+                            } else {
+                                for (let j = i; j < this.data[v1].length; j++) {
+                                    this.data[v1][j] = this.data[v1][j + 1];
+                                };
+                                this.data[v1].length = this.data[v1].length - 1;
+                                break;
+                            }
+                        };
+                    };
+
+                    for (let i = 0; i < this.data[v2].length; i++) {
+                        if (this.data[v2][i] == v1) {
+                            if (this.data[v2].length == 1) {
+                                this.data[v2] = [];
+                                break;
+                            } else {
+                                for (let j = i; j < this.data[v2].length; j++) {
+                                    this.data[v2][j] = this.data[v2][j + 1];
+                                }
+                                this.data[v2].length = this.data[v2].length - 1;
+                                break;
+                            }
+
+                        }
+                    }
+                };
+            };
+
+            // 4- remove edge with Filter
+            removeEdgeWithFilter(v1, v2) {
+                if (this.data[v1] && this.data[v2]) {
+                    // for v1 
+                    this.data[v1] = this.data[v1].filter((elem) => elem != v2)
+
+                    // for v2
+                    this.data[v2] = this.data[v2].filter(elem => elem != v1)
+                }
+            };
+
+            // 5- delete vertex with loop
+            deleteVertexWithLoop(vertex) {
+                if (this.data[vertex]) {
+                    for (let i = 0; i < this.data[vertex].length; i++) {
+                        for (let j = 0; j < this.data[this.data[vertex][i]].length; j++) {
+                            if (this.data[this.data[vertex][i]][j] == vertex) {
+                                for (let z = j; z < this.data[this.data[vertex][i]].length; z++) {
+                                    this.data[this.data[vertex][i]][z] = this.data[this.data[vertex][i]][z + 1];
+                                }
+                                this.data[this.data[vertex][i]].length = this.data[this.data[vertex][i]].length - 1;
+                                break;
+                            };
+                        };
+                    };
+                    delete this.data[vertex]
+                } else {
+                    console.warn("The vertex was not found!");
+                };
+            };
+
+            // 6- delete vertex with filter
+            deleteVertexWithFilter(vertex) {
+                if(this.data[vertex]) {
+                    this.data[vertex].forEach(element => {
+                        this.data[element] = this.data[element].filter((elem) => elem != vertex)
+
+                        // console.warn(s);
+                    });
+
+                    delete this.data[vertex]
+                }else {
+                    console.warn("The vertex was not found!");
+                };
+            };
+        };
+
+        const vertexGraph = new VertexGraph();
+        // 1- add vertex
+        vertexGraph.addVertex('A');
+        vertexGraph.addVertex('B');
+        vertexGraph.addVertex('C');
+        vertexGraph.addVertex('D');
+
+        // 2- add edge
+        vertexGraph.addEdge('A', 'B');
+        vertexGraph.addEdge('A', 'C');
+        vertexGraph.addEdge('B', 'C');
+        vertexGraph.addEdge('B', 'D');
+
+        // 3- remove edge with loop
+        // vertexGraph.removeEdgeWithLoop('B', 'D');
+        // vertexGraph.removeEdgeWithLoop('B', 'C');
+        // vertexGraph.removeEdgeWithLoop('A', 'C');
+        // vertexGraph.removeEdgeWithLoop('A', 'B');
+        // vertexGraph.removeEdgeWithLoop('A', 'B');
+
+        // 4- remove edge with Filter
+        // vertexGraph.removeEdgeWithFilter('A', 'B');
+        // vertexGraph.removeEdgeWithFilter('C', 'B');
+        // vertexGraph.removeEdgeWithFilter('C', 'A');
+        // vertexGraph.removeEdgeWithFilter('D', 'B');
+
+        // 5- delete vertex with loop
+        // vertexGraph.deleteVertexWithLoop('A')
+        // vertexGraph.deleteVertexWithLoop('B')
+        // vertexGraph.deleteVertexWithLoop('C')
+        // vertexGraph.deleteVertexWithLoop('D')
+        // vertexGraph.deleteVertexWithLoop('D')
+
+        // 6- delete vertex with filter
+        vertexGraph.deleteVertexWithFilter('A');
+        vertexGraph.deleteVertexWithFilter('D');
+        vertexGraph.deleteVertexWithFilter('C');
+        vertexGraph.deleteVertexWithFilter('B');
+        vertexGraph.deleteVertexWithFilter('B');
+
+        console.warn(vertexGraph.data);
+
+    </script>
+</body>
+
+</html>

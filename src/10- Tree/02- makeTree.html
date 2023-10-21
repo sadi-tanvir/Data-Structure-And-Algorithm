@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Search Tree</title>
+</head>
+
+<body>
+    <h1>Binary Search Tree</h1>
+
+    <script>
+        class Node {
+            constructor(val) {
+                this.value = val;
+                this.left = null;
+                this.right = null;
+            }
+        }
+
+        class BSTree {
+            constructor() {
+                this.root = null;
+            }
+
+            isTreeEmpty() {
+                return this.root === null;
+            }
+
+            // insert node in a binary searchF tree
+            insertNode(root, newNode) {
+                if (root.value > newNode.value) {
+                    if (root.left === null) {
+                        root.left = newNode;
+                    } else {
+                        this.insertNode(root.left, newNode);
+                    }
+                } else {
+                    if (root.right === null) {
+                        root.right = newNode;
+                    } else {
+                        this.insertNode(root.right, newNode);
+                    }
+                }
+            }
+
+            // making a binary search tree
+            makeTree(val) {
+                let newNode = new Node(val);
+                if (this.isTreeEmpty()) {
+                    this.root = newNode;
+                    return;
+                }
+
+                this.insertNode(this.root, newNode)
+            }
+
+
+            // search node from binary search tree or BSTree
+            searchNode(root, val) {
+                if (root === null) {
+                    return false;
+                } else if (root.value === val) {
+                    return true;
+                } else {
+                    if (root.value < val) {
+                        return this.searchNode(root.right, val);
+                    } else {
+                        return this.searchNode(root.left, val);
+                    };
+                };
+            };
+
+            print() {
+                console.warn(this.root, 'full root');
+            }
+        }
+
+        const bsTree = new BSTree();
+        bsTree.makeTree(20);
+        bsTree.makeTree(10);
+        bsTree.makeTree(5);
+        bsTree.makeTree(11);
+        bsTree.makeTree(30);
+        bsTree.makeTree(23);
+        bsTree.makeTree(40);
+        // bsTree.print()
+        // console.warn(bsTree.root, 'full root - 2');
+        // bsTree.searchNode(bsTree.root, 34);
+        console.log(bsTree.searchNode(bsTree.root, 10));
+        console.log(bsTree.isTreeEmpty());
+    </script>
+</body>
+
+</html>

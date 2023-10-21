@@ -3,22 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recursion Data Structure</title>
+    <title>Quick Sort</title>
 </head>
 
 <body>
 
-    <h1>Recursion Data Structure</h1>
+    <h1>Quick Sort</h1>
 
     <script>
-        let mainArr = [2, 7, 1, 8, 6, 3, 5, 4];
 
         function partition(arr, low, high) {
             let pivot = arr[high];
             let i = low - 1;
-
 
             for (let j = low; j < high; j++) {
                 if (arr[j] < pivot) {
@@ -27,31 +24,35 @@
                     let temp = arr[i];
                     arr[i] = arr[j];
                     arr[j] = temp;
-                }
-            }
+                };
 
-            // swap with pivot
+
+            };
+            // pivot
             i++;
             let temp = arr[i];
-            arr[i] = arr[high];
+            arr[i] = pivot;
             arr[high] = temp;
-            return i;
-
-        }
+            return i // pivot index
+        };
 
         function quickSort(arr, low, high) {
             if (low < high) {
-                const pivotIndex = partition(arr, low, high)
+                let pivotIndex = partition(arr, low, high)
 
                 quickSort(arr, low, pivotIndex - 1);
                 quickSort(arr, pivotIndex + 1, high);
-            }
-
-            return arr
+            };
         }
 
-        console.warn(quickSort(mainArr, 0, mainArr.length - 1));
+        function main() {
+            let arr = [6, 3, 9, 5, 2, 8];
+            let n = arr.length;
+            quickSort(arr, 0, n - 1);
+            return arr;
+        };
 
+        console.log(main());
     </script>
 </body>
 

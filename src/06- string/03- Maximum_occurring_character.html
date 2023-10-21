@@ -26,44 +26,45 @@
 
     <div id="mainDiv" class="w-10/12 mx-auto mt-5 border border-red-500 p-5">
         <h1 class="text-2xl text-red-700 capitalize font-bold" id="doNotMatch"></h1>
-        <span class="simpleSpan"></span>
+        <!-- <span class="simpleSpan block text-white"></span> -->
     </div>
 
     <script>
         const mainDiv = document.getElementById("mainDiv");
         const doNotMatch = document.getElementById("doNotMatch");
+        // const simpleSpan = document.getElementsByClassName("simpleSpan")
 
 
-        class PalindromeString {
-            constructor(data) {
-                this.data = data;
-                this.left = 0;
-                this.right = this.data.length - 1;
-                this.result = true;
-            };
-            palindromeCheck() {
-                while (this.left < this.right) {
-                    if (this.data[this.left] !== this.data[this.right]) {
-                        this.result = false;
-                    };
-
-                    this.left++;
-                    this.right--;
-                };
-
-                if (!this.result) {
-                    return doNotMatch.innerText = "palindrome doesn't match!"
-                } else {
-                    return (
-                        doNotMatch.innerText = "palindrome has been matched!",
-                        doNotMatch.classList.replace("text-red-700", "text-white")
-                    );
-                };
-            };
+     class MaximumOccurringCharacter {
+        constructor() {
+            this.strObj = {};
         };
 
-        const palindromeString = new PalindromeString('level');
-        palindromeString.palindromeCheck();
+        checkMaximumOccurringCharacter(str) {
+            for (let i = 0; i < str.length; i++) {
+               if(this.strObj[str[i]]) {
+                this.strObj[str[i]]++;
+               }else {
+                this.strObj[str[i]] = 1;
+               }
+            }
+        }
+
+        anotherWayToFindOut(str) {
+            for (const char of str) {
+                this.strObj[char] = (this.strObj[char] || 0) + 1;
+            };
+            
+            Object.values(this.strObj).map((elem) => {
+                return mainDiv.innerHTML = `<span class="simpleSpan block text-white">${elem}</span>`
+            })
+        }
+     };
+
+     const maximumOccurringCharacter = new MaximumOccurringCharacter();
+    //  maximumOccurringCharacter.checkMaximumOccurringCharacter("all the prime minister's man");
+     maximumOccurringCharacter.anotherWayToFindOut("all the prime minister's man");
+     console.warn(maximumOccurringCharacter.strObj);
 
     </script>
 </body>

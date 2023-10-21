@@ -13,41 +13,63 @@
     <h1>Factorial of 5</h1>
 
     <script>
-        class Recursion {
-            constructor() {
-                this.factorial = 1;
-            }
-            factorialFunction(x) {
-                if (x > 0) {
-                    this.factorial = this.factorial * x
-                    console.log(this.factorial);
-                    this.factorialFunction(x - 1)
-                }
+
+        // function reverseNums(nums) {
+        //     if (nums == 1) {
+        //         return nums;
+        //     }
+        //     let lastNum = nums / 10;
+        //     let pre = reverseNums(parseInt(lastNum))
+        //     return nums * 10 + pre
+
+        // }
+
+        // console.warn(reverseNums(123456));
+
+
+        // 1st
+        function factorial(x) {
+            if (x == 0) {
+                return 1;
             }
 
-            factorialWhile(x) {
-                while (x > 0) {
-                    this.factorial = this.factorial * x;
-                    console.log(this.factorial)
-                    x = x - 1;
-                }
-            }
+            let pre = factorial(x - 1);
+
+            console.warn(x * pre);
+
+            return x * pre
         }
+        console.log(factorial(5));
 
-        let recursion = new Recursion()
-        // recursion.factorialFunction(5)
-        recursion.factorialWhile(5)
 
-        /*
-            // 1st
-            function expense2(x) {
-                if (x == 0) {
-                    return 1
-                }
-                return x * expense2(x - 1)
-            }
-            console.log(expense2(10));
-        */
+        /*  class Recursion {
+             constructor() {
+                 this.factorial = 1;
+             }
+             factorialFunction(x) {
+                 if (x > 1) {
+                     this.factorial = this.factorial * x
+                     console.log(this.factorial);
+                     this.factorialFunction(x - 1)
+                 }
+             }
+ 
+             factorialWhile(x) {
+                 while (x > 1) {
+                     this.factorial = this.factorial * x;
+                     console.log(this.factorial)
+                     x = x - 1;
+                 }
+             }
+         }
+ 
+         let recursion = new Recursion()
+         // recursion.factorialFunction(5)
+         recursion.factorialWhile(5) */
+
+
+
+
 
         /*
                // 2nd

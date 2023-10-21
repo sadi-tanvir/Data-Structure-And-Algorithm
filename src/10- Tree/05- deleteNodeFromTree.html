@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>delete nodes of tree</title>
+</head>
+
+<body>
+    <h1>delete nodes of tree</h1>
+
+    <script>
+        let tree = {
+            value: 20,
+            left: {
+                value: 10,
+                left: {
+                    value: 5,
+                    left: null,
+                    right: null
+                },
+                right: {
+                    value: 11,
+                    left: null,
+                    right: null
+                }
+            },
+            right: {
+                value: 30,
+                left: {
+                    value: 23,
+                    left: null,
+                    right: null
+                },
+                right: {
+                    value: 40,
+                    left: null,
+                    right: null
+                }
+            }
+        };
+
+        function minValue(root) {
+            if (!root.left) {
+                return root.value
+            } else {
+                return minValue(root.left)
+            }
+        }
+
+
+        function deleteNode(root, value) {
+            if (root === null) return null;
+
+            if (value < root.value) {
+                root.left = deleteNode(root.left, value);
+            } else if (value > root.value) {
+                root.right = deleteNode(root.right, value);
+            } else {
+                if (!root.left && !root.right) {
+                    return null;
+                } else if (!root.left) {
+                    return root.right;
+                } else if (!root.right) {
+                    return root.left;
+                };
+
+                root.value = minValue(root.right);
+                root.right = deleteNode(root.right, root.value);
+            };
+        };
+
+        function removeNode(root, value) {
+            root = deleteNode(root, value);
+            return root;
+        }
+
+        console.log(removeNode(tree, 5));
+
+    </script>
+</body>
+
+</html>

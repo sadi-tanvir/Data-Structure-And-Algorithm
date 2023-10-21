@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depth first Search</title>
+</head>
+
+<body>
+    <h1>Depth first Search</h1>
+
+    <script>
+        const tree = {
+            value: 20,
+            left: {
+                value: 10,
+                left: {
+                    value: 5,
+                    left: null,
+                    right: null
+                },
+                right: {
+                    value: 11,
+                    left: null,
+                    right: null
+                }
+            },
+            right: {
+                value: 30,
+                left: {
+                    value: 23,
+                    left: null,
+                    right: null
+                },
+                right: {
+                    value: 40,
+                    left: null,
+                    right: null
+                }
+            }
+        };
+
+        function preDFSTree(root) {
+            if(root){
+                let watch = root;
+                preDFSTree(root.left);
+                preDFSTree(root.right);
+            }
+        }
+        function inDFSTree(root) {
+            if(root){
+                inDFSTree(root.left);
+                let watch = root;
+                inDFSTree(root.right);
+            }
+        }
+        inDFSTree(tree)
+
+
+    </script>
+</body>
+
+</html>

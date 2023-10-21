@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breadth first Search</title>
+</head>
+
+<body>
+    <h1>Breadth first Search</h1>
+
+    <script>
+        const tree = {
+            value: 20,
+            left: {
+                value: 10,
+                left: {
+                    value: 5,
+                    left: null,
+                    right: null
+                },
+                right: {
+                    value: 11,
+                    left: null,
+                    right: null
+                }
+            },
+            right: {
+                value: 30,
+                left: {
+                    value: 23,
+                    left: null,
+                    right: null
+                },
+                right: {
+                    value: 40,
+                    left: null,
+                    right: null
+                }
+            }
+        };
+
+        function breadthFirstSearch() {
+            let nodeTracking = []; // you can ignore this just took this for tracking the deleted element
+            let queue = [];
+            queue.push(tree);
+            while (queue.length) {
+                let current = queue.shift();
+                if (current.left) {
+                    queue.push(current.left);
+                }
+                if (current.right) {
+                    queue.push(current.right);
+                }
+                nodeTracking[nodeTracking.length] = current.value
+            }
+
+            return nodeTracking
+        };
+
+        console.log(breadthFirstSearch());
+
+    </script>
+</body>
+
+</html>
