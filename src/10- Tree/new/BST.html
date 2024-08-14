@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Node {
+            constructor(value) {
+                this.value = value;
+                this.right = null;
+                this.left = null;
+            };
+        };
+
+        class BinarySearchTree {
+            constructor() {
+                this.root = null;
+            };
+
+            addChild(val) {
+                let newNode = new Node(val);
+                if (!this.root) {
+                    this.root = newNode;
+                    return;
+                }
+
+                let current = this.root;
+                let added = false;
+
+                while (!added && current) {
+                    if (current.value <= val) {
+                        if (current.right === null) {
+                            current.right = newNode;
+                            added = true;
+                            break;
+                        }
+                        current = current.right;
+                    } else {
+                        if (current.left === null) {
+                            current.left = newNode;
+                            added = true;
+                            break;
+                        }
+                        current = current.left;
+                    }
+                }
+            };
+
+            searchNode(val) {
+                if (!this.root) {
+                    console.warn("Empty Tree!");
+                    return;
+                }
+
+                let current = this.root;
+                while (current) {
+                    if (current.value === val) {
+                        console.warn("got the value " + current.value);
+                        break;
+                    } else if (current.value <= val) {
+                        current = current.right;
+                    } else {
+                        current = current.left;
+                    };
+                };
+            };
+        };
+
+        const binarySearchTree = new BinarySearchTree();
+        binarySearchTree.addChild(50);
+        // binarySearchTree.addChild(50);
+        binarySearchTree.addChild(45);
+        binarySearchTree.addChild(55);
+        binarySearchTree.addChild(60);
+        binarySearchTree.addChild(52);
+        binarySearchTree.addChild(44);
+        binarySearchTree.addChild(46);
+        binarySearchTree.addChild(51);
+
+
+        binarySearchTree.searchNode(52);
+        binarySearchTree.searchNode(44);
+        binarySearchTree.searchNode(51);
+
+        console.log(binarySearchTree.root);
+
+    </script>
+</body>
+
+</html>
